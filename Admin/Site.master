@@ -1,0 +1,307 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Admin/Site.master.cs" Inherits="Site" %>
+<%@ Register Src="~/CSRFControl.ascx" TagPrefix="csrf" TagName="CSRFControl" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>ADRC</title>
+     <asp:PlaceHolder runat="server">
+        <%: System.Web.Optimization.Styles.Render("~/Content/Default") %>
+        <%: System.Web.Optimization.Scripts.Render("~/Scripts/AdminDefault") %>
+    </asp:PlaceHolder>
+    <%--<link href="../Styles/template.css" rel="stylesheet" />
+
+    <link href="../Styles/sessionpopup.css" rel="stylesheet" type="text/css" />
+    <script src="../Scripts/progressbar_mini.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jqueryUI.1.9.2.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.ui.widget.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.ui.dialog.js" type="text/javascript"></script>
+    <script src="../Scripts/json2.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../Scripts/common_functions.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-1.11.1.min.js"></script>--%>
+    
+
+    <!--[if IE 7]>
+        <style type="text/css">
+            .ul-dropdown ul
+            {
+                top:20px !important;
+            }
+        </style>
+    <![endif]-->
+
+    <script type="text/javascript">
+        $(document).ready(function () {            
+            $(".account").click(function () {
+                var X = $(this).attr('id');
+
+                if (X == 1) {
+                    $(".submenu").hide();
+                    $(this).attr('id', '0');
+                }
+                else {
+
+                    $(".submenu").show();
+                    $(this).attr('id', '1');
+                }
+            });
+
+            //Mouseup textarea false
+            $(".submenu").mouseup(function () {
+                return false
+            });
+            $(".account").mouseup(function () {
+                return false
+            });
+
+            //Textarea without editing.
+            $(document).mouseup(function () {
+                $(".submenu").hide();
+                $(".account").attr('id', '');
+            });
+
+        });
+
+    </script>
+
+
+</head>
+<script type="text/javascript">
+    $(document).ready(function () {
+        approoturl = "<%=(Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath) %>"; //Added By AR, 9-Jan-2024 | SOW-654
+    });
+    function StartSessionRemaining() {
+        loadProgressBar();
+        startWorker();
+    }
+
+    //Added by KP on 28th Sep 2021(T6278), Web worker process start from here
+    //this is used to run the exact timer whenever page is not in active/focus mode.
+    var w_Obj;
+    function startWorker() {
+        if (typeof (Worker) !== "undefined") {
+            if (typeof (w_Obj) == "undefined") {
+                w_Obj = new Worker('<%= Page.ResolveUrl("~/Scripts/TimerWorker.js")%>');
+            }
+
+            w_Obj.postMessage(parseInt("<%= Session.Timeout * 60 %>", 10)); //send/pass the session time value to worker. 
+            w_Obj.onmessage = function (event) {
+
+                myProgressBar.labelText = "Session Time Remaining: " + new String(event.data[0]);
+                myProgressBar.setValue(event.data[1]);
+                document.getElementById('timeRemainingPopup').innerHTML = new String(event.data[0]);
+
+                if (event.data[1] == 300) showHideSessionPopup();
+                if (event.data[1] == 0) self.location = '<%= Page.ResolveUrl("~/Logout.aspx") %>';
+            };
+        } else {
+            console.log("Sorry, your browser does not support Web Workers...");
+        }
+    }
+    //End (T6278)
+
+    function loadProgressBar() {
+        myProgressBar = new ProgressBar("my_progress_bar_1", {
+            borderRadius: 10,
+            height: 15,
+            maxValue: parseInt("<%= Session.Timeout * 60 %>", 10),
+            orientation: ProgressBar.Orientation.Horizontal,
+            direction: ProgressBar.Direction.RightToLeft,
+            imageUrl: '<%= Page.ResolveUrl("../images/h_fg4.png")%>',
+            backgroundUrl: '<%= Page.ResolveUrl("../images/h_fg6.png")%>',
+            markerUrl: '<%= Page.ResolveUrl("../images/marker2.png")%>'
+        });
+    }
+
+    function showHideSessionPopup(actiontype) {
+        var ele = document.getElementById("showHideSessionDiv");
+        if (actiontype == "hide") {
+            ele.style.display = "none";
+        }
+        else
+            ele.style.display = "block";
+      
+    }
+    function extendSession() {
+        showHideSessionPopup('hide');
+        SessionKeepAlive();
+
+        //Added by KP on 28th Sep 2021(T6278), Terminate the current running web worker and then restart again it.
+        w_Obj.terminate();
+        w_Obj = undefined;
+        startWorker();
+        //////
+
+    }
+
+ function SessionKeepAlive() {
+        $.get(
+            "../SessionKeepAlive.ashx",
+            null,
+            function (data) {
+            },
+            "json"
+        );
+    }
+
+
+
+</script>
+
+
+
+<body onload="StartSessionRemaining();">
+    <form id="Form1" runat="server" autocomplete="off">
+        <%-- Added by PC on 03 Feb 2020, Purpose: Cross-site request forgery (CSRF) --%>
+			<csrf:CSRFControl runat="server" ID="CSRFControl" />
+		<%--END--%>
+        <asp:ScriptManager ID="scrptMGR" runat="server">
+        </asp:ScriptManager>
+        <div id="divoverlaysuccess" class="lightbox-overlay" style="display: none"></div>
+        <div id="divalert" class="light-box" style="display: none">
+            <div id="divheader" class="light-box-heading">
+                <span id="spnImg"></span>
+                <span id="spnHeader"></span>
+            </div>
+            <div class="light-box-body">
+                <span id="spnMessage" class="lightbox-msg-style" style="text-align: left">
+                    <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label><br />
+                </span>
+                <div style="text-align: center; padding: 10px 10px 0">
+                    <input id="btnClosePopup" onclick="HideAlertBox()" class="btn_Confirm btn-successalert gradient" style="width: 100px !important; padding: 1px 9px" value="OK" type="button" />
+                </div>
+            </div>
+        </div>
+        <div class="top_header banner_height">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td align="left">
+                        <span class="logo">
+                            <img src="../images/logo.jpg" /></span>
+                    </td>
+                    <td align="center">
+                        <span class="banner">
+                            <img src="../images/banner.png" /></span>
+                    </td>
+                    <td align="right">
+                        <span class="ais-logo">
+                            <img src="../images/ais-logo.png" /></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="user-menu" style="position: relative;">
+            <div class="welcome-msg">
+                <%-- <div class="usermenu_block" align="center">
+                        <span class="user-welcome"></span>--%>
+                <asp:Label ID="lblwelcome" runat="server" Text=" Welcome:"></asp:Label>
+                <strong>
+                    <asp:Label ID="lblUser" runat="server"></asp:Label></strong>
+                <%-- </div>--%>
+            </div>
+            <ul class="user-menu-left">
+                <li><a href="DashBoard.aspx" class="home">Home</a></li>
+                <li><a href="/PCLogin/PCMenu.aspx" class="partner_home" hyperlink>Partner Home</a></li>
+                <li><a href='<%= Page.ResolveUrl("~/Logout.aspx") %>' class="logout Hyperlink">Logout</a></li>
+            </ul>
+            <div class="top_container">
+                <div id="my_progress_bar_1" style="float: right;">
+                </div>
+            </div>
+
+            <!-- :: MAIN POPUP DIV IS CLOSE :: -->
+            <div class="clear_01">
+            </div>
+        </div>
+        <div class="bottom-menu">
+            <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;">
+                <tr>
+
+                    <td align="right">
+                        <div class="usermenu_block">
+                            <asp:Label ID="Agency" runat="server" Text="Agency:"></asp:Label>
+                            <strong>
+                                <asp:Label ID="lblAgencyName" runat="server"></asp:Label></strong>
+                        </div>
+                    </td>
+                    <td align="left">
+                        <div class="usermenu_block">
+                            <asp:Label ID="ADRC" runat="server" Text=" ADRC:"></asp:Label>
+                            <strong>
+                                <asp:Label ID="lblADRC" runat="server"></asp:Label></strong>
+                        </div>
+                    </td>
+                    <td style="width: 680px;">
+                        <ul>
+                            <li id="liUpdateCall" runat="server">
+                                <%--Do not change position of query string UC. If you  want, then also change index for UC in javascript function --%>
+                                <asp:HyperLink ID="hprUpdateCall" Text="<span></span>Update Call"
+                                    runat="server" CssClass="search"> </asp:HyperLink>
+                            </li>
+                            <li id="liSearchPerson" runat="server">
+                                <%--Do not change position of query string UC. If you  want, then also change index for UC in javascript function --%>
+                                <asp:HyperLink ID="hprSearchPerson" Text="<span></span> Search Person"
+                                    runat="server" CssClass="search"> </asp:HyperLink>
+                            </li>
+                             <li id="liNewPerson" runat="server">
+                                <asp:HyperLink ID="hrpNewPerson" Text="<span></span>New Person" runat="server"  NavigateUrl='~/NeedyPerson.aspx?NdID=0&IsNew=1'
+                                    class="add"></asp:HyperLink>
+                            </li>
+                            <li id="liADRCReport" runat="server">
+                                <asp:HyperLink ID="hrpADRCReport" runat="server" Text="<span></span>Report" NavigateUrl='~/Report/ADRCReporting.aspx'
+                                    class="report"></asp:HyperLink>
+                            </li>
+
+                            <li id="liSystemSetting">
+                                <div class="dropdown">
+                                    <a id="ancSystemSetting" runat="server" class="account"><span>System Setting</span></a>
+                                    <div class="submenu" style="display: none;">
+                                        <div class="root">
+                                            <a href='<%= Page.ResolveUrl("~/Admin/messageCenter.aspx") %>'>Message Center</a> 
+                                            <a href='<%= Page.ResolveUrl("~/Admin/FollowupSetting.aspx") %>'>Follow-up Setting</a>
+                                            <a href='<%= Page.ResolveUrl("~/Admin/MergePersonNeedyAssistance.aspx") %>'>Merge Person Needing Assistance</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="clear_01">
+            </div>
+        </div>
+        <div class="body_container">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            <br />
+        </div>
+
+        <div id="showHideSessionDiv" class="session_main_popup" style="display: none;">
+            <!-- :: MAIN POPUP DIV IS OPEN :: -->
+
+            <div class="session_popup">
+                <div class="session_popup_header">
+                    Session Timeout Warning
+		<input type="button" value="" class="session_close" onclick="return showHideSessionPopup('hide');" />
+                </div>
+                <div style="background-image: url(../images/delete_warning.png); background-repeat: no-repeat; background-position: 15px 40px; float: left; width: 100px; height: 150px; margin: 0 0 0 15px;"></div>
+
+                <div style="float: left; width: 400px; text-align: center;">
+                    <h2>Your session is about to expire!</h2>
+                    <h3>You will be logged out in <span id="timeRemainingPopup" style="color: Red"></span>&nbsp; minute.</h3>
+                    <h3>Do you want to stay signed in?</h3>
+                    <input type="button" class="sm_btn" value="Yes, Keep me signed in" onclick="return extendSession();" />&nbsp;
+		    <input type="button" class="sm_btn" value="No" onclick="return showHideSessionPopup('hide');" />
+                </div>
+                <br clear="all" />
+            </div>
+        </div>
+        <!-- :: MAIN POPUP DIV IS CLOSE :: -->
+
+
+    </form>
+</body>
+</html>
