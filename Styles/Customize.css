@@ -1,0 +1,47 @@
+﻿body
+{
+    font-family: Verdana;
+    font-size: 11px;
+}
+label
+{
+    display: inline;
+    padding-right: 2px;
+}
+/*
+    Checkbox formatting section.
+ */
+#Checks input[type=checkbox]
+{
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin: 0;
+    vertical-align: bottom;
+    position: relative;
+    top: -2px;
+    left: -2px;
+    overflow: hidden;
+}
+
+#Checks label
+{
+    font-size: 11px !important;
+    font-family: Verdana;
+    font-weight: normal;
+}
+
+/* Section used to position loading image in the center of the Listbox while loading. */
+.main-select
+{
+    position: relative;
+}
+.select-loader
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/bigrotation2.gif) no-repeat center;
+}

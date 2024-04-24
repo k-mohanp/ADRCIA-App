@@ -1,0 +1,137 @@
+
+body 
+{
+	margin:0;
+	padding:0;
+}
+
+.clear_01
+{
+    clear:both;
+}
+
+.header 
+{
+    background-image:url(../images/header-bg.gif);
+    background-repeat:repeat-x;
+    width:100%;
+    height:113px;
+}
+
+.heared_left 
+{
+    float:left;
+}
+
+.heared_right
+{
+    float:right;
+}
+
+.user_menu 
+{
+    background-color:#C1C0BF;
+    font-family:Arial;
+    font-size:14px;
+    font-weight:bold;
+    color:#25578b;
+    padding:5px 3px;
+}
+
+.user_menu a 
+{
+    text-decoration:none;
+    color:#25578b;
+}
+
+.user_menu a:hover 
+{
+    text-decoration:underline;
+}
+
+.menu_left 
+{
+    float:left;
+    margin:0 0 5px 0;
+}
+
+.menu_right
+{
+    float:right;
+    margin:0 0 5px 0;
+}
+
+.user_01 
+{
+    float:left;
+    width:32%;
+    text-align:left;
+}
+
+.user_02
+{
+    float:left;
+    width:36%;
+    text-align:center;
+}
+
+.user_03
+{
+    float:left;
+    width:32%;
+    text-align:right;
+}
+
+.form_heading
+{
+    font-weight:bold;
+    font-size:14px;
+    color:#fff;
+    font-family:Arial;
+    background-color:#265482;
+    padding:5px;
+    clear:both;
+}
+
+.form_heading span
+{
+    float:right;
+}
+
+.input_default
+{
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height:16px;
+	color: #000000;
+}
+.main_gridview 
+{
+	border-right:solid 5px #000;
+}
+.table_header
+{
+	/*background-color: #134436;*/
+	background-color: #1C7147;
+	color: #FFFFFF;
+}
+
+tr.d0 td
+{
+	background-color: #FFFFD4;
+	color: black;
+	border-right: 1px solid;
+	border-color: #CCCCCC;
+	text-align: left;
+	vertical-align: top;
+}
+tr.d1 td
+{
+	background-color: #FFFFFF;
+	color: black;
+	border-right: 1px solid;
+	border-color: #CCCCCC;
+	text-align: left;
+	vertical-align: top;
+}
+

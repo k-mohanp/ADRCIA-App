@@ -1,0 +1,72 @@
+.session_popup_header {
+background-image:url(../images/popup_heading.jpg);
+	background-repeat:repeat-x;
+	height: 36px;
+	color: white;
+	text-align: left;
+	font-weight: bold;
+	font-size: 16px;
+	padding: 14px 0 0 11px;
+	position:relative;
+	margin:0 0 10px 0;
+}
+
+.session_popup {
+	width:500px;
+	height:240px;
+	margin:-20% auto 0 auto;
+	border:solid 5px #000;
+	background:#fff;
+	top:400px;
+	position:relative;
+	z-index:999;
+}
+
+.session_main_popup {
+	background-image:url(../images/01.png);
+	background-repeat:repeat;
+	width:100%;
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:999;
+}
+
+.session_close {
+	background-color:transparent;
+	background-image:url(../images/popup_close2.png);
+	background-repeat:no-repeat;
+	color:#fff;
+	position:absolute;
+	top:15px;
+	right:5px;
+	border:none;
+	cursor:pointer;
+	width:16px;
+	height:16px;
+}
+
+.sm_btn {
+	background-color:#4b8bf2;
+	border:solid 1px #317beb;
+	color:#fff;
+	padding:3px 10px;
+	cursor:pointer;
+	font-weight:bold;
+}
+
+
+.session_popup *
+{
+	margin:auto !important;
+	padding:auto !important;
+}
+
+.session_popup H2 {
+	PADDING-BOTTOM: 4px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; COLOR: #000000; FONT-SIZE: 120%; FONT-WEIGHT: bold; PADDING-TOP: 4px
+}
+.session_popup H3 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 6px; PADDING-RIGHT: 0px; COLOR: #000000; FONT-SIZE: 100%; FONT-WEIGHT: bold; PADDING-TOP: 2px
+}
