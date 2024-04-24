@@ -1,0 +1,164 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Test.aspx.cs" Inherits="Test" %>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        ul {
+            list-style-type: none;
+            display: inline;
+            padding-left: 2px;
+            padding-top: 0px;
+        }
+    </style>
+    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/jquery.multiselect.css" />
+    <link rel="stylesheet" type="text/css" href="assets/jquery.multiselect.filter.css" />
+    <link rel="stylesheet" type="text/css" href="assets/style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/prettify.css" />
+    <link href="../assets/jQueryUI.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="src/jquery.multiselect.js"></script>
+    <script type="text/javascript" src="src/jquery.multiselect.filter.js"></script>
+    <script type="text/javascript" src="assets/prettify.js"></script>
+    <script type="text/javascript" src="Scripts/json2.js"></script>
+
+    <script type="text/javascript" language="javascript">
+
+        $(function () {
+
+            getRefferedTo();
+            getOCTriggers();
+            $("#chkList").multiselect().multiselectfilter();
+            $("#chkTriggers").multiselect().multiselectfilter();
+
+
+            $("input[name=multiselect_chkList]:eq(0)").prop("checked", false);
+
+            bindCheckList();
+
+            setHeaderText();
+            GetCheckboxValues();
+
+        });
+
+        function setHeaderText() {
+            var values = GetCheckboxText();
+            $("#btnHeader").html(GetCheckboxText());
+        }
+
+        function getRefferedTo() {
+
+            $.ajax({
+                type: "POST",
+                url: "NeedyPerson.aspx/GetRefferedTo",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: "{}",
+                async: false,
+                success: function (data) {
+                    var Result = JSON.parse(data.d);
+                    $.each(Result, function (key, value) {
+
+                        $("#chkList").append("<option value=" + value.Value + ">" + value.Key + "</option>");
+
+                    });
+                },
+
+                error: function () {
+
+                    alert('Failed to retrieve data.');
+                }
+            });
+        }
+
+        function getOCTriggers() {
+
+            $.ajax({
+                type: "POST",
+                url: "NeedyPerson.aspx/getOCTriggers",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: "{}",
+                async: false,
+                success: function (data) {
+                    var Result = JSON.parse(data.d);
+                    $.each(Result, function (key, value) {
+
+                        $("#chkTriggers").append("<option value=" + value.OCTriggerID + ">" + value.OCTriggerPresent + "</option>");
+
+                    });
+                },
+
+                error: function () {
+
+                    alert('Failed to retrieve data.');
+                }
+            });
+        }
+
+
+        function bindCheckList() {
+
+            var items = "9008,9037,9048,9058";
+
+            $('input[name=multiselect_chkList]').each(function (index) {
+
+                if (items.indexOf($(this).val()) != -1) {
+
+                    $(this).prop('checked', true);
+                }
+            });
+        }
+
+        function GetCheckboxValues(chkName) {// chkList & chlTriggers
+
+            var chkValues = $('input[name=multiselect_' + chkName + ']:checked').map(function () { return $(this).val(); }).get().join(',');
+
+            return chkValues;
+        }
+
+        function getTriggers() {
+            document.getElementById("<%= HFTriggers.ClientID%>").value = GetCheckboxValues('chkTriggers');
+
+            alert(document.getElementById("<%= HFTriggers.ClientID%>").value);
+        }
+
+        function GetCheckboxText() {
+
+            var chkValues = $('input[name=multiselect_chkTriggers]:checked').map(function () { return $(this).next().html(); }).get().join(',');
+
+            var len = $('input[name=multiselect_chkTriggers]:checked').length;
+
+            
+
+            return (chkValues == "") ? "Select options" : len + " selected";
+        }
+    </script>
+
+
+
+
+</head>
+<body >
+    <form runat="server">
+        
+            <p>
+                <select id="chkTriggers"  style="width: 370px;">
+                </select>
+            </p>
+            <asp:HiddenField ID="HFTriggers" runat="server" />
+        
+
+        <div>
+            <input type="button"  value="Get Triggers"/>
+        </div>
+
+    </form>
+</body>
+</html>

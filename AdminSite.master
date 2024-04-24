@@ -1,0 +1,260 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminSite.master.cs" Inherits="AdminSite" %>
+<%--<%@ Register Src="~/Control/topnav.ascx" TagName="TopNav" TagPrefix="uc" %>--%>
+<%@ Register Src="~/CSRFControl.ascx" TagPrefix="csrf" TagName="CSRFControl" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>ADRC</title>
+   <%-- <link href="Styles/template.css" rel="stylesheet" />
+     <link href="Styles/sessionpopup.css" rel="stylesheet" type="text/css" />--%>
+    <asp:PlaceHolder runat="server">
+        <%: System.Web.Optimization.Styles.Render("~/Content/Default") %>
+        <%: System.Web.Optimization.Scripts.Render("~/Scripts/AdminDefault") %>
+    </asp:PlaceHolder>
+    <%--<script src="../Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jqueryUI.1.9.2.js" type="text/javascript"></script>
+
+    <script src="../Scripts/jquery.ui.widget.js" type="text/javascript"></script>
+
+    <script src="../Scripts/jquery.ui.dialog.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="../Scripts/common_functions.js"></script>
+
+    <script src="../Scripts/progressbar_mini.js" type="text/javascript"></script>--%>
+
+
+    <!--[if IE 7]>
+        <style type="text/css">
+            .ul-dropdown ul
+            {
+                top:20px !important;
+            }
+        </style>
+    <![endif]-->
+    
+
+    <script type="text/javascript" >
+        $(document).ready(function () {            
+            $(".account").click(function () {
+                var X = $(this).attr('id');
+
+                if (X == 1) {
+                    $(".submenu").hide();
+                    $(this).attr('id', '0');
+                }
+                else {
+
+                    $(".submenu").show();
+                    $(this).attr('id', '1');
+                }
+            });
+
+            //Mouseup textarea false
+            $(".submenu").mouseup(function () {
+                return false
+            });
+            $(".account").mouseup(function () {
+                return false
+            });
+
+            //Textarea without editing.
+            $(document).mouseup(function () {
+                $(".submenu").hide();
+                $(".account").attr('id', '');
+            });
+
+        });
+	
+    </script>
+
+    
+</head>
+<script type="text/javascript">
+    $(document).ready(function () {
+        approoturl = '<%= (Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath) %>';
+    });
+    function StartSessionRemaining() {
+        //loadProgressBar();
+        startSessionClock();
+    }
+
+    // Following global variables and function is used for timeout counter
+
+    var intTimerLimit = parseInt("<%= Session.Timeout * 60 %>", 10);
+
+    var intTimerStep = 1;
+    var minutes;
+    var seconds;
+    function startSessionClock() {
+        intTimerLimit = intTimerLimit - intTimerStep;
+        minutes = new String(parseInt(intTimerLimit / 60));
+        seconds = (intTimerLimit % 60);
+        if (parseInt(seconds) < 10) seconds = new String('0' + seconds);
+        if (parseInt(minutes) < 10) minutes = new String('0' + minutes);
+        document.getElementById('timeRemainingPopup').innerHTML = new String(minutes + ':' + seconds);
+        myProgressBar.labelText = "Session Time Remaining: " + minutes + ':' + seconds;
+        myProgressBar.setValue(intTimerLimit); $("#timeRemaining").html(intTimerLimit);
+        if (intTimerLimit > 0) setTimeout("startSessionClock()", 1000);
+        if (intTimerLimit == 300) showHideSessionPopup();
+        if (intTimerLimit == 0) self.location = '<%= Page.ResolveUrl("~/Logout.aspx") %>';
+    }
+
+    function loadProgressBar() {
+        myProgressBar = new ProgressBar("my_progress_bar_1", {
+            borderRadius: 10,
+            width: 301,
+            height: 15,
+            maxValue: intTimerLimit,
+            orientation: ProgressBar.Orientation.Horizontal,
+            direction: ProgressBar.Direction.RightToLeft,
+            imageUrl: '<%= Page.ResolveUrl("~/images/h_fg4.png")%>',
+            backgroundUrl: '<%= Page.ResolveUrl("~/images/h_fg6.png")%>',
+            markerUrl: '<%= Page.ResolveUrl("~/images/marker2.png")%>'
+        });
+    }
+
+    function showHideSessionPopup(actiontype) {
+
+        var ele = document.getElementById("showHideSessionDiv");
+        if (actiontype == "hide") ele.style.display = "none";
+        else
+            ele.style.display = "block";
+    }
+    function extendSession() {
+        showHideSessionPopup('hide');
+	    SessionKeepAlive();
+        //this.callback = function () { }; // do nothing
+        intTimerLimit = parseInt("<%= Session.Timeout * 60 %>");
+
+    }
+
+    function SessionKeepAlive() {
+        $.get(
+            "SessionKeepAlive.ashx",
+            null,
+            function (data) {
+            },
+            "json"
+        );
+    }
+
+</script>
+<body onload="StartSessionRemaining();">
+<form id="Form1" runat="server">
+    <%-- Added by PC on 03 Feb 2020, Purpose: Cross-site request forgery (CSRF) --%>
+			<csrf:CSRFControl runat="server" ID="CSRFControl" />
+		<%--END--%>
+    <asp:ScriptManager ID="scrptMGR" runat="server">
+    </asp:ScriptManager>
+    <div class="top_header banner_height">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td align="left">
+                    <span class="logo"><img src="../images/logo.jpg" /></span>
+                </td>
+
+                <td align="center">
+                    <span class="banner"><img src="../images/banner.png" /></span>
+                </td>
+
+                <td align="right">
+                    <span class="ais-logo"><img src="../images/ais-logo.png"  /></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="user-menu">
+        <ul class="user-menu-left">
+            <li><a href="DashBoard.aspx" class="home">Home</a></li>
+            <li><a href="/PCLogin/PCMenu.aspx" class="partner_home">Partner Home</a></li>
+            <li><a href="../Logout.aspx" class="logout">Logout</a></li>
+
+        </ul>
+        
+         <div class="top_container">
+                <div id="my_progress_bar_1" style="float: right;">
+                </div>
+          </div>
+  
+
+        <div class="clear_01">
+        </div>
+
+    </div>
+
+    <div class="bottom-menu">
+        <table cellpadding="0" cellspacing="0" border="0"> 
+            <tr>
+                <td align="right">
+                    <div class="usermenu_block">
+                        <span class="user-welcome"></span>
+                        <asp:Label ID="lblwelcome" runat="server" Text=" Welcome:"></asp:Label>
+                        <strong><asp:Label ID="lblUser" runat="server"></asp:Label></strong>
+                    </div>
+                </td>
+                   
+                <td align="right">
+                    <div class="usermenu_block">
+                        <asp:Label ID="Agency" runat="server" Text="Agency:"></asp:Label>
+                        <strong><asp:Label ID="lblAgencyName" runat="server"></asp:Label></strong>
+                    </div>
+                </td>
+                <td align="left">
+                    <div class="usermenu_block">
+                    <asp:Label ID="ADRC" runat="server" Text=" ADRC:"></asp:Label>
+                    <strong><asp:Label ID="lblADRC" runat="server"></asp:Label></strong>
+                       
+                </div>                      
+                </td>
+            </tr>
+        </table>
+    <div class="admin_menu">
+    <div class="dropdown">
+	    <a class="account"><span>System Setting</span></a>
+        <div class="submenu" style="display: none; ">
+            <div class="root">
+                <a href="messageCenter.aspx">Message Center</a>
+                <a href="FollowupSetting.aspx">Follow-up Setting</a>
+            </div>
+        </div>
+	</div>
+    </div>
+          
+          <div class="clear_01"></div>
+   </div>
+    
+
+
+
+ 
+
+     <div class="body_container">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        <br />
+    </div>
+
+    </form>
+     <div id="showHideSessionDiv" class="session_main_popup" style="display:none;"><!-- :: MAIN POPUP DIV IS OPEN :: -->
+
+<div class="session_popup">
+	<div class="session_popup_header">Session Timeout Warning
+		<input type="button" value="" class="session_close" onclick="return showHideSessionPopup('hide');" />
+	</div>
+	<div style="background-image:url(images/delete_warning.png); background-repeat:no-repeat; background-position:15px 40px; float:left; width:100px; height:150px; margin:0 0 0 15px;"></div>
+
+    <div style="float:left; width:400px; text-align:center;">
+        <h2> Your session is about to expire!</h2>
+        <h3>You will be logged out in <span id="timeRemainingPopup" style ="color:Red" ></span> &nbsp; minute.</h3>    
+        <h3> Do you want to stay signed in?</h3>
+		    <input type="button" class="sm_btn" value="Yes, Keep me signed in"  onclick="return extendSession();"/>&nbsp;
+		    <input type="button" class="sm_btn" value="No" onclick="return showHideSessionPopup('hide');"/>
+	</div>
+	<br clear="all" />
+</div>
+</div><!-- :: MAIN POPUP DIV IS CLOSE :: -->
+
+
+ 
+</body>
+</html>

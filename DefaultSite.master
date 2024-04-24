@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="DefaultSite.master.cs" Inherits="DefaultSite" %>
+<%@ Register Src="~/CSRFControl.ascx" TagPrefix="csrf" TagName="CSRFControl" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+     <%--<link href="Styles/template.css" rel="stylesheet" />--%>
+   <asp:PlaceHolder runat="server">
+        <%: System.Web.Optimization.Styles.Render("~/Content/Default") %>   
+    </asp:PlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <%-- Added by PC on 03 Feb 2020, Purpose: Cross-site request forgery (CSRF) --%>
+			<csrf:CSRFControl runat="server" ID="CSRFControl" />
+		<%--END--%>	
+     <asp:ScriptManager ID="scrptMGR" runat="server">
+    </asp:ScriptManager>
+    <div class="top_header">
+       <%-- <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td>
+                    <span class="logo">
+                        <img src="images/logo.jpg" /></span>
+                </td>
+                <td align="right">
+                    <span class="banner">
+                        <img src="images/banner.png" /></span> <span class="ais-logo">
+                            <img src="images/ais-logo.png" /></span>
+                </td>
+            </tr>
+        </table>--%>
+    </div>
+
+
+
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

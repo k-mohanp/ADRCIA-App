@@ -1,0 +1,338 @@
+﻿using ADRCIA;
+using Microsoft.Office.Interop.Excel;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Web;
+using System.Web.Script.Serialization;
+using System.Web.Services;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Text;
+
+public partial class Test : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        //DataSet ds = ADRCIADAL.GetADRCAgencyList();
+        //chkList.DataSource = ds.Tables[0];
+        //chkList.DataTextField = "ADRCName1ADRC";
+        //chkList.DataValueField = "ADRCSiteIDADRC";
+        //chkList.DataBind();
+
+        //ClientScript.RegisterStartupScript(this.GetType(), "getChecked", "bindCheckList();setHeaderText();", true);
+
+        //string triggers = HFTriggers.Value;
+        //ABC();
+
+        
+
+    }
+
+
+   void Demo()
+    {
+       
+    }
+
+    //void MQRGReport()
+    //{
+    //    Microsoft.Office.Interop.Excel.Workbook xlsbook = null;
+
+    //    Microsoft.Office.Interop.Excel.Worksheet xlsdoc1 = new Microsoft.Office.Interop.Excel.Worksheet();
+    //    Microsoft.Office.Interop.Excel.Range range;
+    //    DataSet ds; //= objBAL.MQRGExcelReport(1);
+
+    //    Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+
+    //    excel.SheetsInNewWorkbook = 1;
+
+    //    Microsoft.Office.Interop.Excel.Application xlsapp = null;
+
+    //    xlsapp = new Microsoft.Office.Interop.Excel.Application();
+
+
+
+    //    xlsbook = xlsapp.Workbooks.Add(Missing.Value);
+
+
+    //    int Presequencelevel = 0;
+    //    int NewrowRange = 9;
+    //    for (int j = 0; j < ds.Tables[2].Rows.Count; j++)
+    //    {
+
+    //        xlsdoc1 = (Microsoft.Office.Interop.Excel.Worksheet)xlsbook.Worksheets.Add(Missing.Value);
+    //        xlsdoc1.Name = ds.Tables[2].Rows[j]["VIN"].ToString();
+    //        Presequencelevel = -1;
+    //        NewrowRange = 9;
+
+    //        try
+    //        {
+    //            range = xlsdoc1.Range["A2", "I2"];
+    //            range.Merge();
+    //            range.Value2 = "PRE/POST-INSPECTION  REWORK / REPROCESS EVALUATION";
+    //            range.Font.Name = "Arial";
+    //            range.Font.Size = 13;
+    //            //range.Font.ColorIndex = 5;
+    //            range.Font.Bold = true;
+    //            range.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+    //            range.BorderAround(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlThin, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexNone, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexNone);
+
+    //            range = xlsdoc1.Range["A4", "I4"];
+    //            range.Merge();
+    //            range.Value2 = "MQRG";
+    //            range.Font.Name = "Arial";
+    //            range.Font.Size = 20;
+    //            //range.Font.ColorIndex = 5;
+    //            range.Font.Bold = true;
+    //            range.HorizontalAlignment = XlHAlign.xlHAlignLeft;
+    //            range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+
+
+    //            range = xlsdoc1.Range["A6", "E6"];
+    //            range.Merge();
+    //            range.Value2 = "PROCEDURE TITLE";
+    //            range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+
+    //            range = xlsdoc1.Range["F6", "G6"];
+    //            range.Merge();
+    //            range.Value2 = Convert.ToString(ds.Tables[0].Rows[0]["PlantName"]);
+    //            range.Font.Bold = true;
+    //            range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+
+    //            range = xlsdoc1.Range["H6", "I6"];
+    //            range.Merge();
+    //            range.Value2 = Convert.ToString(ds.Tables[0].Rows[0]["HoldDescription"]);
+    //            range.Font.Name = "Calibri";
+    //            range.HorizontalAlignment = XlHAlign.xlHAlignLeft;
+    //            range.Font.Bold = true;
+    //            range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+
+    //            range = xlsdoc1.Range["A7", "E7"];
+    //            range.Merge();
+    //            range.Value2 = "JOB NUMBER";
+    //            range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+    //            range = xlsdoc1.Range["F7", "I7"];
+    //            range.Merge();
+    //            range.Value2 = ds.Tables[0].Rows[0]["HoldNumber"].ToString();
+    //            range.Font.Name = "Calibri";
+    //            range.HorizontalAlignment = XlHAlign.xlHAlignLeft;
+    //            range.Font.Bold = true;
+    //            range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+
+    //            range = xlsdoc1.Range["A8", "E8"];
+    //            range.Merge();
+    //            range.Value2 = "VIN NUMBER";
+    //            range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+    //            range = xlsdoc1.Range["F8", "I8"];
+    //            range.Merge();
+    //            range.Value2 = ds.Tables[2].Rows[j]["VIN"].ToString();//"DB Value";
+    //            range.Font.Name = "Calibri";
+    //            range.HorizontalAlignment = XlHAlign.xlHAlignLeft;
+    //            range.Font.Bold = true;
+    //            range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+
+
+    //            String QChkTypeVal1 = string.Empty;
+    //            String QChkTypeVal2 = string.Empty;
+    //            for (int i = 0; i < ds.Tables[3].Rows.Count; i++)
+    //            {
+
+    //                if (Convert.ToInt32(ds.Tables[3].Rows[i]["sequencelevel"]) != Presequencelevel)
+    //                {
+    //                    NewrowRange += 2;
+    //                }
+    //                else
+    //                    NewrowRange += 1;
+    //                range = xlsdoc1.Range["A" + NewrowRange, "E" + NewrowRange];
+    //                range.Merge();
+    //                if (Convert.ToInt32(ds.Tables[3].Rows[i]["IndentLeve"]) == 1)
+    //                    range.Value2 = "  " + ds.Tables[3].Rows[i]["StandardSpec"].ToString();
+    //                else if (Convert.ToInt32(ds.Tables[3].Rows[i]["IndentLeve"]) == 2)
+    //                    range.Value2 = "    " + ds.Tables[3].Rows[i]["StandardSpec"].ToString();
+    //                else
+    //                    range.Value2 = ds.Tables[3].Rows[i]["StandardSpec"].ToString();
+
+    //                if (Convert.ToInt32(ds.Tables[3].Rows[i]["sequencelevel"]) != Presequencelevel)
+    //                {
+    //                    if (ds.Tables[3].Rows[i]["QChkType"].ToString() == "PRESENT-NOTPRESENT")
+    //                    {
+    //                        QChkTypeVal1 = "PRESENT";
+    //                        QChkTypeVal2 = "NOTPRESENT";
+    //                    }
+    //                    else if (ds.Tables[3].Rows[i]["QChkType"].ToString() == "PASS-FAIL")
+    //                    {
+    //                        QChkTypeVal1 = "PASS";
+    //                        QChkTypeVal2 = "FAIL";
+    //                    }
+    //                    else if (ds.Tables[3].Rows[i]["QChkType"].ToString() == "YES-NO")
+    //                    {
+    //                        QChkTypeVal1 = "YES";
+    //                        QChkTypeVal2 = "NO";
+    //                    }
+    //                    else
+    //                    {
+    //                        QChkTypeVal1 = "";
+    //                        QChkTypeVal2 = "";
+    //                    }
+    //                    range = xlsdoc1.Range["F" + NewrowRange, "G" + NewrowRange];
+    //                    range.Merge();
+    //                    range.Value2 = QChkTypeVal1;
+    //                    range.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+
+    //                    range = xlsdoc1.Range["H" + NewrowRange, "I" + NewrowRange];
+    //                    range.Merge();
+    //                    range.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+    //                    range.Value2 = QChkTypeVal2;
+    //                    Presequencelevel = Convert.ToInt32(ds.Tables[3].Rows[i]["sequencelevel"]);
+    //                }
+    //                else
+    //                {
+    //                    range = xlsdoc1.Range["F" + NewrowRange, "G" + NewrowRange];
+    //                    range.Merge();
+    //                    range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+
+    //                    range = xlsdoc1.Range["H" + NewrowRange, "I" + NewrowRange];
+    //                    range.Merge();
+    //                    range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+
+    //                }
+
+
+
+    //            }
+
+    //        }
+    //        catch
+    //        {
+
+    //        }
+    //    }
+    //    // ASSIGNMENT SECTION
+    //    xlsdoc1 = new Worksheet();
+    //    xlsdoc1 = (Worksheet)xlsbook.Worksheets.Add(Missing.Value);
+    //    xlsdoc1.Name = "Assignment";
+
+    //    range = xlsdoc1.Range["A2", "I2"];
+    //    range.Merge();
+    //    range.Value2 = "ASSIGNMENT";
+    //    range.Font.Name = "Arial";
+    //    range.Font.Size = 13;
+    //    range.Font.Bold = true;
+    //    range.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+    //    range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+
+    //    range = xlsdoc1.Range["A4", "B4"];
+    //    range.Merge();
+    //    range.Value2 = "TL/Mechanics: ";
+
+    //    range = xlsdoc1.Range["C4", "I4"];
+    //    range.Merge();
+    //    range.Value2 = Convert.ToString(ds.Tables[4].Rows[0]["TEAM LEAD NAME"]) + "/" + Convert.ToString(ds.Tables[4].Rows[0]["MECHANIC NAME"]);
+
+    //    range.Font.Name = "Arial";
+    //    range.Font.Size = 10;
+    //    //range.Font.ColorIndex = 5;
+    //    range.Font.Bold = true;
+    //    range.HorizontalAlignment = XlHAlign.xlHAlignLeft;
+    //    range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+    //    int StartNumber = 7;
+    //    for (int ast = 0; ast < ds.Tables[5].Rows.Count; ast++)
+    //    {
+    //        StartNumber += 1;
+    //        range = xlsdoc1.Range["A7", "B7"];
+    //        range.Merge();
+    //        range.Value2 = "VIN";
+    //        range.Font.Bold = true;
+    //        range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+    //        range = xlsdoc1.Range["A" + StartNumber, "B" + StartNumber];
+    //        range.Merge();
+    //        range.Value2 = Convert.ToString(ds.Tables[5].Rows[ast]["VIN"]);
+
+
+    //        range = xlsdoc1.Range["C7", "E7"];
+    //        range.Merge();
+    //        range.Value2 = "LOCATION";
+    //        range.Font.Bold = true;
+    //        range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+    //        range = xlsdoc1.Range["C" + StartNumber, "E" + StartNumber];
+    //        range.Merge();
+    //        range.Value2 = Convert.ToString(ds.Tables[5].Rows[ast]["Location"]);
+
+    //        range = xlsdoc1.Range["F7", "G7"];
+    //        range.Merge();
+    //        range.Value2 = "BAY INFO";
+    //        range.Font.Bold = true;
+    //        range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+    //        range = xlsdoc1.Range["F" + StartNumber, "G" + StartNumber];
+    //        range.Merge();
+    //        range.Value2 = Convert.ToString(ds.Tables[5].Rows[ast]["BayInfo"]);
+
+    //        range = xlsdoc1.Range["H7", "I7"];
+    //        range.Merge();
+    //        range.Value2 = "HANGTAG";
+    //        range.Font.Bold = true;
+    //        range.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlThin, XlColorIndex.xlColorIndexNone, XlColorIndex.xlColorIndexNone);
+    //        range = xlsdoc1.Range["H" + StartNumber, "I" + StartNumber];
+    //        range.Merge();
+    //        range.Value2 = Convert.ToString(ds.Tables[5].Rows[ast]["HangTag"]);
+
+    //        range.Font.Name = "Arial";
+    //        range.Font.Size = 10;
+    //        //range.Font.ColorIndex = 5;
+
+    //        range.HorizontalAlignment = XlHAlign.xlHAlignLeft;
+
+    //    }
+    //    xlsapp.DisplayAlerts = false;
+    //    for (int i = xlsapp.ActiveWorkbook.Worksheets.Count; i > 0; i--)
+    //    {
+    //        Worksheet wkSheet = (Worksheet)xlsapp.ActiveWorkbook.Worksheets[i];
+    //        if (wkSheet.Name.Contains("Sheet"))
+    //        {
+    //            wkSheet.Delete();
+    //        }
+    //    }
+    //    xlsapp.DisplayAlerts = true;
+
+    //    string outfile = Server.MapPath("~/MQRG_Quality_Excel/MQRGReport.xls");//@"C:\APP_OUTPUT\EXCEL_TEST.xlsx";
+
+    //    if (File.Exists(outfile))
+    //        File.Delete(outfile);
+
+    //    xlsbook.SaveAs(outfile, Type.Missing, Type.Missing, Type.Missing,
+    //                    Type.Missing, Type.Missing, XlSaveAsAccessMode.xlNoChange,
+    //                    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+    //                    Type.Missing);
+
+
+    //    xlsbook.Close();
+    //    excel.Quit();
+
+    //    ExcelDownload(outfile);
+
+
+    //}
+
+    //    System.IO.FileStream fs = null;
+    //    fs = System.IO.File.Open(outfile, FileMode.Open);
+    //    byte[] btFile = new byte[fs.Length];
+    //    fs.Read(btFile, 0, Convert.ToInt32(fs.Length));
+    //    fs.Close();
+    //    Response.Clear();
+    //    Response.AppendHeader("content-disposition", "attachment; filename=EXCEL_TEST.xls");
+    //    Response.ContentType = "plain/text";
+    //    UTF8Encoding encoding = new UTF8Encoding();
+    //    Response.BinaryWrite(btFile);
+    //    Response.Flush();
+    //    Response.End();
+
+
+    //}
+
+
+}
