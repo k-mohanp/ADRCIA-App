@@ -1,0 +1,171 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" InitialTargets="ValidateSolutionConfiguration;ValidateToolsVersions" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_SolutionProjectConfiguration>Debug|Any CPU</_SolutionProjectConfiguration>
+    <_SolutionProjectToolsVersion>4.0</_SolutionProjectToolsVersion>
+    <_SolutionProjectCacheVersion>4.0</_SolutionProjectCacheVersion>
+  </PropertyGroup>
+  <ItemGroup />
+  <UsingTask TaskName="Microsoft.Build.Tasks.CreateTemporaryVCProject" AssemblyName="Microsoft.Build.Tasks.v3.5, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <UsingTask TaskName="Microsoft.Build.Tasks.ResolveVCProjectOutput" AssemblyName="Microsoft.Build.Tasks.v3.5, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <PropertyGroup Condition=" '$(Configuration)' == '' ">
+    <Configuration>Debug</Configuration>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == '' ">
+    <Platform>Any CPU</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" ('$(AspNetConfiguration)' == '') ">
+    <AspNetConfiguration>$(Configuration)</AspNetConfiguration>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SolutionDir>D:\Data\Project\secure\ADRCIA-BranchV1\</SolutionDir>
+    <SolutionExt>.sln</SolutionExt>
+    <SolutionFileName>ADRCIA.sln</SolutionFileName>
+    <SolutionName>ADRCIA</SolutionName>
+    <SolutionPath>D:\Data\Project\secure\ADRCIA-BranchV1\ADRCIA.sln</SolutionPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and '$(MSBuildToolsVersion)' == '2.0'">v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and ('$(MSBuildToolsVersion)' == '3.5' or '$(MSBuildToolsVersion)' == '3.0')">v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and '$(MSBuildToolsVersion)' == '4.0'">v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+    <CurrentSolutionConfigurationContents>
+      <SolutionConfiguration xmlns="">
+        <ProjectConfiguration Project="{C07D825D-3E94-4C32-B4D8-D1317A38474D}">Debug|AnyCPU</ProjectConfiguration>
+      </SolutionConfiguration>
+    </CurrentSolutionConfigurationContents>
+  </PropertyGroup>
+  <PropertyGroup Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+    <CurrentSolutionConfigurationContents>
+      <SolutionConfiguration xmlns="">
+      </SolutionConfiguration>
+    </CurrentSolutionConfigurationContents>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(AspNetConfiguration)' == 'Debug' ">
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetVirtualPath>/ADRCIA</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetVirtualPath>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetPhysicalPath>..\ADRCIA-BranchV1\</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetPhysicalPath>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetTargetPath>PrecompiledWeb\ADRCIA\</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetTargetPath>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetForce>true</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetForce>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetUpdateable>true</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetUpdateable>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetDebug>True</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetDebug>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetKeyFile>
+    </Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetKeyFile>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetKeyContainer>
+    </Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetKeyContainer>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetDelaySign>
+    </Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetDelaySign>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetAPTCA>
+    </Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetAPTCA>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetFixedNames>false</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetFixedNames>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetTargetPath Condition=" '$(OutDir)' != '' ">$(OutDir)_PublishedWebsites\ADRCIA-BranchV1\</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetTargetPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(AspNetConfiguration)' == 'Release' ">
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetVirtualPath>/ADRCIA</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetVirtualPath>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetPhysicalPath>..\ADRCIA-BranchV1\</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetPhysicalPath>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetTargetPath>PrecompiledWeb\ADRCIA\</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetTargetPath>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetForce>true</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetForce>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetUpdateable>true</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetUpdateable>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetDebug>False</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetDebug>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetKeyFile>
+    </Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetKeyFile>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetKeyContainer>
+    </Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetKeyContainer>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetDelaySign>
+    </Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetDelaySign>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetAPTCA>
+    </Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetAPTCA>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetFixedNames>false</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetFixedNames>
+    <Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetTargetPath Condition=" '$(OutDir)' != '' ">$(OutDir)_PublishedWebsites\ADRCIA-BranchV1\</Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetTargetPath>
+  </PropertyGroup>
+  <Target Name="ValidateSolutionConfiguration">
+    <Error Text="The specified solution configuration &quot;$(Configuration)|$(Platform)&quot; is invalid. Please specify a valid solution configuration using the Configuration and Platform properties (e.g. MSBuild.exe Solution.sln /p:Configuration=Debug /p:Platform=&quot;Any CPU&quot;) or leave those properties blank to use the default solution configuration." Code="MSB4126" HelpKeyword="MSBuild.SolutionInvalidSolutionConfiguration" Condition="('$(CurrentSolutionConfigurationContents)' == '') and ('$(SkipInvalidConfigurations)' != 'true')" />
+    <Warning Text="The specified solution configuration &quot;$(Configuration)|$(Platform)&quot; is invalid. Please specify a valid solution configuration using the Configuration and Platform properties (e.g. MSBuild.exe Solution.sln /p:Configuration=Debug /p:Platform=&quot;Any CPU&quot;) or leave those properties blank to use the default solution configuration." Code="MSB4126" HelpKeyword="MSBuild.SolutionInvalidSolutionConfiguration" Condition="('$(CurrentSolutionConfigurationContents)' == '') and ('$(SkipInvalidConfigurations)' == 'true')" />
+    <Message Text="Building solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="'$(CurrentSolutionConfigurationContents)' != ''" />
+  </Target>
+  <Target Name="ValidateToolsVersions">
+    <Error Text="The tools version &quot;$(MSBuildToolsVersion)&quot; of the solution does not support building projects with a different tools version." Code="MSB4149" HelpKeyword="MSBuild.SolutionToolsVersionDoesNotSupportProjectToolsVersion" Condition="'$(MSBuildToolsVersion)' == '2.0' and ('$(ProjectToolsVersion)' != '2.0' and '$(ProjectToolsVersion)' != '')" />
+  </Target>
+  <Target Name="GetFrameworkPathAndRedistList">
+    <GetFrameworkPath>
+      <Output TaskParameter="Path" ItemName="_CombinedTargetFrameworkDirectoriesItem" Condition="'$(MSBuildToolsVersion)' == '2.0'" />
+      <Output TaskParameter="FrameworkVersion40Path" ItemName="_CombinedTargetFrameworkDirectoriesItem" Condition=" '$(TargetFrameworkVersion)' == 'v4.0' and '$(MSBuildToolsVersion)' == '4.0'" />
+      <Output TaskParameter="FrameworkVersion35Path" ItemName="_CombinedTargetFrameworkDirectoriesItem" Condition=" ('$(TargetFrameworkVersion)' == 'v3.5' or '$(TargetFrameworkVersion)' == 'v4.0') and '$(MSBuildToolsVersion)' != '2.0'" />
+      <Output TaskParameter="FrameworkVersion30Path" ItemName="_CombinedTargetFrameworkDirectoriesItem" Condition=" ('$(TargetFrameworkVersion)' == 'v3.0' or '$(TargetFrameworkVersion)' == 'v3.5' or '$(TargetFrameworkVersion)' == 'v4.0') and '$(MSBuildToolsVersion)' != '2.0'" />
+      <Output TaskParameter="FrameworkVersion20Path" ItemName="_CombinedTargetFrameworkDirectoriesItem" Condition="'$(MSBuildToolsVersion)' != '2.0'" />
+    </GetFrameworkPath>
+    <CreateItem Include="@(_CombinedTargetFrameworkDirectoriesItem->'%(Identity)\RedistList\*.xml')">
+      <Output TaskParameter="Include" ItemName="InstalledAssemblyTables" />
+    </CreateItem>
+  </Target>
+  <Target Name="ADRCIA" DependsOnTargets=";GetFrameworkPathAndRedistList" Condition=" ('$(CurrentSolutionConfigurationContents)' != '') and (false or ( ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ) or ( ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') )) ">
+    <CreateItem Include="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetPhysicalPath)\Bin\*.refresh">
+      <Output TaskParameter="Include" ItemName="Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_RefreshFile" />
+    </CreateItem>
+    <ReadLinesFromFile File="%(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_RefreshFile.Identity)" Condition=" '%(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_RefreshFile.Identity)' != '' ">
+      <Output TaskParameter="Lines" ItemName="Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_ReferenceRelPath" />
+    </ReadLinesFromFile>
+    <CombinePath BasePath="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetPhysicalPath)" Paths="@(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_ReferenceRelPath)">
+      <Output TaskParameter="CombinedPaths" ItemName="Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References" />
+    </CombinePath>
+    <Copy SourceFiles="@(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References->'%(FullPath)')" DestinationFolder="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetPhysicalPath)\Bin\" Condition="!Exists('%(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References.Identity)')" ContinueOnError="true" />
+    <ResolveAssemblyReference Assemblies="@(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References->'%(FullPath)')" TargetFrameworkDirectories="@(_CombinedTargetFrameworkDirectoriesItem)" InstalledAssemblyTables="@(InstalledAssemblyTables)" SearchPaths="{RawFileName};{TargetFrameworkDirectory};{GAC}" FindDependencies="true" FindSatellites="true" FindSerializationAssemblies="true" FindRelatedFiles="true" Condition="Exists('%(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References.Identity)')">
+      <Output TaskParameter="CopyLocalFiles" ItemName="Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_CopyLocalFiles" />
+    </ResolveAssemblyReference>
+    <Copy SourceFiles="@(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_CopyLocalFiles)" DestinationFiles="@(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_CopyLocalFiles->'$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetPhysicalPath)\Bin\%(DestinationSubDirectory)%(Filename)%(Extension)')" Condition="(false) or ('$(AspNetConfiguration)' == 'Debug') or ('$(AspNetConfiguration)' == 'Release')" />
+    <AspNetCompiler VirtualPath="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetVirtualPath)" PhysicalPath="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetPhysicalPath)" TargetPath="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetTargetPath)" Force="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetForce)" Updateable="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetUpdateable)" Debug="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetDebug)" KeyFile="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetKeyFile)" KeyContainer="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetKeyContainer)" DelaySign="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetDelaySign)" AllowPartiallyTrustedCallers="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetAPTCA)" FixedNames="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetFixedNames)" Condition="(false) or ('$(AspNetConfiguration)' == 'Debug') or ('$(AspNetConfiguration)' == 'Release')" />
+    <Message Text="Skipping because the &quot;$(AspNetConfiguration)&quot; configuration is not supported for this web project.  You can use the AspNetConfiguration property to override the configuration used for building web projects, by adding /p:AspNetConfiguration=&lt;value&gt; to the command line. Currently web projects only support Debug and Release configurations." Condition="!((false) or ('$(AspNetConfiguration)' == 'Debug') or ('$(AspNetConfiguration)' == 'Release'))" />
+  </Target>
+  <Target Name="ADRCIA:Clean" DependsOnTargets=";GetFrameworkPathAndRedistList">
+    <Message Text="Web projects do not support the &quot;Clean&quot; target.  Continuing with remaining projects ..." />
+  </Target>
+  <Target Name="ADRCIA:Rebuild" DependsOnTargets=";GetFrameworkPathAndRedistList" Condition=" ('$(CurrentSolutionConfigurationContents)' != '') and (false or ( ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ) or ( ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') )) ">
+    <CreateItem Include="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetPhysicalPath)\Bin\*.refresh">
+      <Output TaskParameter="Include" ItemName="Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_Rebuild_RefreshFile" />
+    </CreateItem>
+    <ReadLinesFromFile File="%(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_Rebuild_RefreshFile.Identity)" Condition=" '%(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_Rebuild_RefreshFile.Identity)' != '' ">
+      <Output TaskParameter="Lines" ItemName="Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_Rebuild_ReferenceRelPath" />
+    </ReadLinesFromFile>
+    <CombinePath BasePath="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetPhysicalPath)" Paths="@(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_Rebuild_ReferenceRelPath)">
+      <Output TaskParameter="CombinedPaths" ItemName="Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_Rebuild" />
+    </CombinePath>
+    <Copy SourceFiles="@(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_Rebuild->'%(FullPath)')" DestinationFolder="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetPhysicalPath)\Bin\" Condition="!Exists('%(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_Rebuild.Identity)')" ContinueOnError="true" />
+    <ResolveAssemblyReference Assemblies="@(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_Rebuild->'%(FullPath)')" TargetFrameworkDirectories="@(_CombinedTargetFrameworkDirectoriesItem)" InstalledAssemblyTables="@(InstalledAssemblyTables)" SearchPaths="{RawFileName};{TargetFrameworkDirectory};{GAC}" FindDependencies="true" FindSatellites="true" FindSerializationAssemblies="true" FindRelatedFiles="true" Condition="Exists('%(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_Rebuild.Identity)')">
+      <Output TaskParameter="CopyLocalFiles" ItemName="Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_Rebuild_CopyLocalFiles" />
+    </ResolveAssemblyReference>
+    <Copy SourceFiles="@(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_Rebuild_CopyLocalFiles)" DestinationFiles="@(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_References_Rebuild_CopyLocalFiles->'$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetPhysicalPath)\Bin\%(DestinationSubDirectory)%(Filename)%(Extension)')" Condition="(false) or ('$(AspNetConfiguration)' == 'Debug') or ('$(AspNetConfiguration)' == 'Release')" />
+    <AspNetCompiler VirtualPath="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetVirtualPath)" PhysicalPath="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetPhysicalPath)" TargetPath="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetTargetPath)" Force="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetForce)" Updateable="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetUpdateable)" Debug="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetDebug)" KeyFile="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetKeyFile)" KeyContainer="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetKeyContainer)" DelaySign="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetDelaySign)" AllowPartiallyTrustedCallers="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetAPTCA)" FixedNames="$(Project_C07D825D-3E94-4C32-B4D8-D1317A38474D_AspNetFixedNames)" Condition="(false) or ('$(AspNetConfiguration)' == 'Debug') or ('$(AspNetConfiguration)' == 'Release')" />
+    <Message Text="Skipping because the &quot;$(AspNetConfiguration)&quot; configuration is not supported for this web project.  You can use the AspNetConfiguration property to override the configuration used for building web projects, by adding /p:AspNetConfiguration=&lt;value&gt; to the command line. Currently web projects only support Debug and Release configurations." Condition="!((false) or ('$(AspNetConfiguration)' == 'Debug') or ('$(AspNetConfiguration)' == 'Release'))" />
+  </Target>
+  <Target Name="ADRCIA:Publish" DependsOnTargets=";GetFrameworkPathAndRedistList">
+    <Message Text="Web projects do not support the &quot;Publish&quot; target.  Continuing with remaining projects ..." />
+  </Target>
+  <Target Name="Build" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(CollectedBuildOutput)">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="The project &quot;%(SkipLevel0.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel0) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel0.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <CallTarget Targets="ADRCIA" RunEachTargetSeparately="true" />
+  </Target>
+  <Target Name="Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Clean" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="The project &quot;%(SkipLevel0.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel0) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel0.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <CallTarget Targets="ADRCIA:Clean" RunEachTargetSeparately="true" />
+    <Delete Files="ADRCIA.sln.cache" />
+  </Target>
+  <Target Name="Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(CollectedBuildOutput)">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Rebuild" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="The project &quot;%(SkipLevel0.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel0) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel0.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <CallTarget Targets="ADRCIA:Rebuild" RunEachTargetSeparately="true" />
+  </Target>
+  <Target Name="Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Publish" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="The project &quot;%(SkipLevel0.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel0) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel0.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <CallTarget Targets="ADRCIA:Publish" RunEachTargetSeparately="true" />
+  </Target>
+</Project>
